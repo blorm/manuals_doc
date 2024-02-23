@@ -1,0 +1,26 @@
+1. sudo yum update centos-stream*
+   sudo yum install epel-release xl2tpd libreswan lsof vim
+OR sudo apt install xl2tpd, strongswan, vim
+2. sudo vim /etc/ipsec.conf
+     # config setup
+     #   ikev1-policy=accept
+     conn vpn
+        type=transport
+        authby=secret
+        auto=add
+     #    ikev2=never
+     #    pfs=no
+     #    left=%defaultroute
+     #    right=%any
+   sudo vim /etc/ipsec.secrets
+      : PSK "secret"
+3. sudo vim /etc/xl2tpd/xl2tpd.conf
+4. sudo vim pppoptfile
+      auth
+      ms-dns 8.8.8.8
+   sudo vim /etc/ppp/chap-secrets
+      user * password *
+5. sudo vim /etc/sysctl.conf
+      net.ipv4.ip_forward=1
+   sudo sysctl -p
+6. sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
