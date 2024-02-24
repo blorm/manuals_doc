@@ -1,6 +1,6 @@
 1. sudo yum update centos-stream*
    sudo yum install epel-release xl2tpd libreswan lsof vim
-OR sudo apt install xl2tpd, strongswan, vim
+OR sudo apt install xl2tpd strongswan vim
 2. sudo vim /etc/ipsec.conf
      # config setup
      #   ikev1-policy=accept
